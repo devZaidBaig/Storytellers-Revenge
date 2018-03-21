@@ -8,6 +8,8 @@ public class EndCreditsAudio : MonoBehaviour {
     AudioSource endCredit;
     VideoController playing;
 
+    bool playAudio = true;
+
     private void Start()
     {
         playing = Sphere.GetComponent<VideoController>();
@@ -15,9 +17,10 @@ public class EndCreditsAudio : MonoBehaviour {
     }
 
     void Update () {
-        if (!playing.audioSource.isPlaying && playing.finished)
+        if (!playing.audioSource.isPlaying && playing.finished && playAudio)
         {
             endCredit.Play();
+            playAudio = false;
         }
 	}
 }

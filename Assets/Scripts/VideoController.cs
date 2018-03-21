@@ -32,9 +32,9 @@ public class VideoController : MonoBehaviour {
     //Check if input keys have been pressed and call methods accordingly.
     public void PlayVideo()
     {
-        audioSource.Play();
         if (videoPlayer.isPrepared)
         {
+            audioSource.Play();
             videoPlayer.Play();
             videoAudio.Play();
             finished = true;
@@ -49,6 +49,7 @@ public class VideoController : MonoBehaviour {
     public void PauseVideo()
     {
         videoPlayer.Pause();
+        audioSource.Pause();
         videoAudio.Pause();
     }
 

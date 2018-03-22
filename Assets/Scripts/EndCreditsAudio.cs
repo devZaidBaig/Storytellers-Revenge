@@ -12,6 +12,7 @@ public class EndCreditsAudio : MonoBehaviour {
 
     private void Start()
     {
+        
         playing = Sphere.GetComponent<VideoController>();
         endCredit = gameObject.GetComponent<AudioSource>();
     }

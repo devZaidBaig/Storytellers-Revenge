@@ -10,9 +10,10 @@ public class VideoController : MonoBehaviour {
     public GameObject Button;
 
  
-    public AudioSource audioSource;
+    public GvrAudioSource audioSource;
 
     private AudioSource videoAudio;
+    bool isPlaying = true;
 
     public bool finished = false;
 
@@ -21,11 +22,11 @@ public class VideoController : MonoBehaviour {
     {
         videoPlayer = GetComponent<UnityEngine.Video.VideoPlayer>();
         videoAudio = GetComponent<AudioSource>();
-
+        audioSource.enabled = true;
         if (videoPlayer.clip != null)
         {
             videoPlayer.EnableAudioTrack(0, true);
-            videoPlayer.SetTargetAudioSource(0, audioSource);
+            videoPlayer.SetTargetAudioSource(0, videoAudio);
         }
     }
 
@@ -34,22 +35,23 @@ public class VideoController : MonoBehaviour {
     {
         if (videoPlayer.isPrepared)
         {
-            audioSource.Play();
+            if (isPlaying)
+            { audioSource.Play(); }
             videoPlayer.Play();
             videoAudio.Play();
             finished = true;
-            //audioSource.Play();
         }
         else
         {
-            Debug.Log("The video is still loading...");
+            Debug.Log("The video is still loading... or audio is still playing");
         }
     }
 
     public void PauseVideo()
     {
         videoPlayer.Pause();
-        audioSource.Pause();
+        if (audioSource.isPlaying) { audioSource.Pause(); isPlaying = true; }
+        else { isPlaying = false; }
         videoAudio.Pause();
     }
 
@@ -60,6 +62,7 @@ public class VideoController : MonoBehaviour {
         audioSource.Play();
         Button.SetActive(false);
         finished = false;
+        isPlaying = true;
     }
 
     public void ChangeScene(string scene)

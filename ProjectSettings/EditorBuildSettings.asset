@@ -6,11 +6,5 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/germany.unity
-    guid: 5735428669f0c344484c1045b2221349
-  - enabled: 1
-    path: Assets/Scenes/iceland.unity
-    guid: 1e7080720915d3a40ab5cb5b5018a242
-  - enabled: 1
-    path: Assets/Scenes/tajmahal.unity
+    path: Assets/Scenes/main.unity
     guid: 94897b87b2d8423498eb0a5fcdc71576
